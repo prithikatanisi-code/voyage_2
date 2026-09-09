@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, useNavigate, useLocation } from "react-router-dom";
+import { HashRouter, useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "./supabase";
 
 import {
@@ -1608,7 +1608,8 @@ function BoardPage({ type }) {
 ========================================================= */
 
 function App() {
-  const p = window.location.pathname;
+  const location = useLocation();
+  const p = location.pathname;
 
   if (p === "/" || p === "/tourist" || p === "/tourist/") {
     return <Home />;
@@ -1655,7 +1656,7 @@ function App() {
 }
 
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  <HashRouter>
     <App />
-  </BrowserRouter>
+  </HashRouter>
 );
